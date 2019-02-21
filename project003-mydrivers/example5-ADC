@@ -1,0 +1,45 @@
+/*
+ * main.c
+
+ *
+ *  Created on: 15 Feb 2019
+ *      Author: MarioSonlord
+ */
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include "DIO_int.h"
+#include "ADC_int.h"
+void main (void){
+	DiO_voidInitialize();
+	ADC_voidInitialize();
+	ADC_voidEnable();
+	u8 resultDigital;
+	u16 result;
+while(1){
+	ADC_voidStartConv();
+	resultDigital=ADC_u8GetResult();
+	result=resultDigital*(5000/255);
+	if(result>0 && result<2000){
+		DIO_voidSetPinValue(DIO_u8_PIN_8,DIO_u8_HIGH);
+		DIO_voidSetPinValue(DIO_u8_PIN_9,DIO_u8_LOW);
+		DIO_voidSetPinValue(DIO_u8_PIN_10,DIO_u8_LOW);
+
+	}else if(result>2000 && result<3000){
+		DIO_voidSetPinValue(DIO_u8_PIN_9,DIO_u8_HIGH);
+		DIO_voidSetPinValue(DIO_u8_PIN_8,DIO_u8_LOW);
+		DIO_voidSetPinValue(DIO_u8_PIN_10,DIO_u8_LOW);
+
+	}else if(result>3000 && result<6000){
+		DIO_voidSetPinValue(DIO_u8_PIN_10,DIO_u8_HIGH);
+		DIO_voidSetPinValue(DIO_u8_PIN_8,DIO_u8_LOW);
+		DIO_voidSetPinValue(DIO_u8_PIN_9,DIO_u8_LOW);
+
+	}else{
+		DIO_voidSetPinValue(DIO_u8_PIN_10,DIO_u8_LOW);
+		DIO_voidSetPinValue(DIO_u8_PIN_8,DIO_u8_LOW);
+		DIO_voidSetPinValue(DIO_u8_PIN_9,DIO_u8_LOW);
+	}
+}
+
+}
+

@@ -1,0 +1,47 @@
+/*
+ * main.c
+ *
+ *  Created on: ??þ/??þ/????
+ *      Author: smart
+ */
+
+/* example for flashing the 4 leds on the kit-change the file name to main.c to run it on the microcontroller */
+#include "avr/io.h"
+#include "avr/delay.h"
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include "DIO_config.h"
+#include "DIO_int.h"
+#include "GIE_int.h"
+#include "EXTI_int.h"
+#include "EXTI_config.h"
+#include "LED_config.h"
+#include "LED_int.h"
+#include "TIM0_int.h"
+
+void flashing(void);
+int counter=0,flag=0;
+void main(void){
+	DIO_voidInitalization();
+	GIE_voidEnable();
+	TIM0_voidInitialize();
+	TIM0_voidEnableInt();
+	TIM0_voidSetCallBack(flashing);
+	while(1){
+
+	}
+}
+void flashing(void){
+	if(counter==63){
+		if(flag==0){
+			DIO_u8_voidSetPinValue(DIO_u8_PIN_0,DIO_u8_HIGH);//to keep it on for a loop
+			flag=1;
+		}else{
+			DIO_u8_voidSetPinValue(DIO_u8_PIN_0,DIO_u8_LOW);//to turn it off for a loop
+			flag=0;
+		}
+		counter=0;
+	}
+		counter++;
+	}
+

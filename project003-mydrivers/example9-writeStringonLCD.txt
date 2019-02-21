@@ -1,0 +1,40 @@
+/*
+ * main.c
+ *
+ *  Created on: ??þ/??þ/????
+ *      Author: smart
+ */
+
+/* example for flashing the 4 leds on the kit-change the file name to main.c to run it on the microcontroller */
+#include "avr/io.h"
+#include "avr/delay.h"
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include "DIO_config.h"
+#include "DIO_int.h"
+#include "GIE_int.h"
+#include "UART_init.h"
+
+#include "EXTI_int.h"
+#include "EXTI_config.h"
+
+//#include "LED_config.h"
+#include "LCD_init.h"
+//#include "TIM0_int.h"
+
+//int counter=0,flag=0;
+void main(void){
+	DIO_voidInitalization();
+	//GIE_voidEnable();
+	//UART_voidInit();
+	LCD_initalization();
+
+
+	LCD_writeDataString("Kamel");
+
+	while(1){
+		//LCD_writeData('k');
+	}
+}
+
+

@@ -1,0 +1,51 @@
+/*
+ * main.c
+ *
+ *  Created on: ??þ/??þ/????
+ *      Author: smart
+ */
+
+/* example for flashing the 4 leds on the kit-change the file name to main.c to run it on the microcontroller */
+#include "avr/io.h"
+#include "avr/delay.h"
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include "DIO_config.h"
+#include "DIO_int.h"
+#include "LED_config.h"
+#include "LED_int.h"
+
+
+void main(void){
+
+	DIO_voidInitalization();
+
+
+	while(1){
+		LED_voidSetLedOnWithIndex(LED_0_u8_DIO_PIN);
+		_delay_ms(100);
+		LED_voidSetLedOffWithIndex(LED_0_u8_DIO_PIN);
+		_delay_ms(100);
+		LED_voidSetLedOnWithIndex(LED_1_u8_DIO_PIN);
+		_delay_ms(100);
+		LED_voidSetLedOffWithIndex(LED_1_u8_DIO_PIN);
+		_delay_ms(100);
+		LED_voidSetLedOnWithIndex(LED_2_u8_DIO_PIN);
+		_delay_ms(100);
+		LED_voidSetLedOffWithIndex(LED_2_u8_DIO_PIN);
+		_delay_ms(100);
+		LED_voidSetLedOnWithIndex(LED_3_u8_DIO_PIN);
+		_delay_ms(100);
+		LED_voidSetLedOffWithIndex(LED_3_u8_DIO_PIN);
+		_delay_ms(100);
+		LED_voidSetLedOnWithIndex(LED_2_u8_DIO_PIN);
+		_delay_ms(100);
+		LED_voidSetLedOffWithIndex(LED_2_u8_DIO_PIN);
+		_delay_ms(100);
+		LED_voidSetLedOnWithIndex(LED_1_u8_DIO_PIN);
+		_delay_ms(100);
+		LED_voidSetLedOffWithIndex(LED_1_u8_DIO_PIN);
+		_delay_ms(100);
+	}
+}
+

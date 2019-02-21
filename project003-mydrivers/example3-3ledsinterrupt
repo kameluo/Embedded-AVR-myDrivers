@@ -1,0 +1,72 @@
+/*
+ * main.c
+ *
+ *  Created on: ??þ/??þ/????
+ *      Author: smart
+ */
+
+/* example for flashing the 4 leds on the kit-change the file name to main.c to run it on the microcontroller */
+#include "avr/io.h"
+#include "avr/delay.h"
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include "DIO_config.h"
+#include "DIO_int.h"
+#include "GIE_int.h"
+#include "EXTI_int.h"
+#include "EXTI_config.h"
+#include "LED_config.h"
+#include "LED_int.h"
+
+
+void main(void){
+	void lighting(void);
+	void lighting2(void);
+	void lighting3(void);
+	DIO_voidInitalization();
+	GIE_voidEnable();
+	EXTI_voidEnableInt0();
+	EXTI_voidEnableInt1();
+	EXTI_voidEnableInt2();
+	EXTI_voidSetInt0CallBack(lighting);
+	EXTI_voidSetInt1CallBack(lighting2);
+	EXTI_voidSetInt2CallBack(lighting3);
+	while(1){
+
+	}
+
+}
+void lighting(void){
+	if(DIO_u8_GetValue(DIO_u8_PIN_0)==DIO_u8_HIGH){
+		LED_voidSetLedOffWithIndex(LED_u8_Index_0);
+	}else{
+		LED_voidSetLedOnWithIndex(LED_u8_Index_0);
+	}
+		//LED_voidSetLedOnWithIndex(LED_u8_Index_0);
+		//_delay_ms(100);
+		//LED_voidSetLedOffWithIndex(LED_u8_Index_0);
+		//_delay_ms(100);
+	}
+void lighting2(void){
+	if(DIO_u8_GetValue(DIO_u8_PIN_1)==DIO_u8_HIGH){
+		LED_voidSetLedOffWithIndex(LED_u8_Index_1);
+	}else{
+		LED_voidSetLedOnWithIndex(LED_u8_Index_1);
+	}
+		//LED_voidSetLedOnWithIndex(LED_u8_Index_0);
+		//_delay_ms(100);
+		//LED_voidSetLedOffWithIndex(LED_u8_Index_0);
+		//_delay_ms(100);
+	}
+void lighting3(void){
+	if(DIO_u8_GetValue(DIO_u8_PIN_2)==DIO_u8_HIGH){
+		LED_voidSetLedOffWithIndex(LED_u8_Index_2);
+	}else{
+		LED_voidSetLedOnWithIndex(LED_u8_Index_2);
+	}
+		//LED_voidSetLedOnWithIndex(LED_u8_Index_0);
+		//_delay_ms(100);
+		//LED_voidSetLedOffWithIndex(LED_u8_Index_0);
+		//_delay_ms(100);
+	}
+

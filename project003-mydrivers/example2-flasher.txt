@@ -1,0 +1,44 @@
+/*
+ * main.c
+ *
+ *  Created on: Feb 11, 2019
+ *      Author: Kamel
+ */
+#include "avr/io.h"
+#include "avr/delay.h"
+#include "STD_TYPES.h"
+#include "BIT_MATH.h"
+#include "DIO_config.h"
+#include "DIO_int.h"
+#include "LED_config.h"
+#include "LED_int.h"
+
+void main(void){
+
+	while(1){
+		LED_voidSetLedOnWithIndex(LED_0_u8_DIO_PIN);
+		LED_voidSetLedOnWithIndex(LED_3_u8_DIO_PIN);
+		_delay_ms(150);
+		LED_voidSetLedOffWithIndex(LED_0_u8_DIO_PIN);
+		LED_voidSetLedOffWithIndex(LED_3_u8_DIO_PIN);
+		_delay_ms(150);
+		LED_voidSetLedOnWithIndex(LED_0_u8_DIO_PIN);
+		LED_voidSetLedOnWithIndex(LED_3_u8_DIO_PIN);
+		_delay_ms(150);
+		LED_voidSetLedOffWithIndex(LED_0_u8_DIO_PIN);
+		LED_voidSetLedOffWithIndex(LED_3_u8_DIO_PIN);
+		_delay_ms(150);
+		LED_voidSetLedOnWithIndex(LED_1_u8_DIO_PIN);
+		LED_voidSetLedOnWithIndex(LED_2_u8_DIO_PIN);
+		_delay_ms(100);
+		LED_voidSetLedOffWithIndex(LED_1_u8_DIO_PIN);
+		LED_voidSetLedOffWithIndex(LED_2_u8_DIO_PIN);
+		_delay_ms(100);
+		LED_voidSetLedOnWithIndex(LED_1_u8_DIO_PIN);
+		LED_voidSetLedOnWithIndex(LED_2_u8_DIO_PIN);
+		_delay_ms(100);
+		LED_voidSetLedOffWithIndex(LED_1_u8_DIO_PIN);
+		LED_voidSetLedOffWithIndex(LED_2_u8_DIO_PIN);
+		_delay_ms(100);
+	}
+}
